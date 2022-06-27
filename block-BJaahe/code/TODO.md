@@ -4,22 +4,40 @@
 
 ```js
 // Your code goes here
-```
+function outer(str){
+ let sayHello = () =>{
+  alert(str);
+ }
+    sayHello();
+}
+undefined
+outer("Hii");
+outer("Hello Brother");
 
 2. Write a function `delay` that accepts two arguments, a callback and the wait for the time in milliseconds (1000 ms is 1 second). `delay` should return a function that, when invoked waits for the specified amount of time before executing. (Use setTimeout)
 
-```js
-// Your code goes here
-```
+function delay(cb,time){
+  return function (){
+    setTimeOut(cb,time);
+  }
+}
+function h1(){
+  console.log(`I am just check`);
+} 
+let sample = delay(hi,2000)
+sample();
 
 3. Write a function with a closure. The first function should only take one argument, someone's last name, and return the inner function. The returned `inner` function should take one more argument, someone's first name. When inner function when called it should console.log both the first name and the last name with a space.
 
-```js
-function lastName() {
+
+function lastName(str) {
   //  Your code goes here
+    return function inner(str1) {
+       return console.log(`${str}${str1}`);
+    }
 }
 
-let lastNameLee = lastName('lee'); // logs nothing
+let lastNameLee = lastName('lee '); // logs nothing
 lastNameLee('Brett'); //logs 'Brett Lee'
 ```
 
@@ -35,6 +53,17 @@ lastNameLee('Lynne'); //logs 'Lynne Lee'
 ```js
 function storyWriter() {
   // Your code goes here
+  let story = "";
+  return{
+    addWords: function (word){
+      story = story + word;
+      return story;
+    },
+    erase:function (story){
+      story = "";
+      return story;
+  }
+  }
 }
 
 // Test
@@ -54,26 +83,37 @@ storyOfMyLife.erase(); // ''
 When `forEach` function is called it returns another function. When the returned function is called it returns the element from the array at specific index. Every time you call the returned function the value of index should increment.
 
 ```js
-function forEach() {
-  // Your code goes here
+function forEach(arr) {
+  let index = 0;
+  return function() {
+    
+    return arr[index++];
+  }
 }
 
-let next = [1, 2, 3, 4, 5];
+let next = forEach([1, 2, 3, 4, 5]);
+
 next(); // 1
 next(); // 2
 next(); // 3
 next(); // 4
 next(); // 5
-```
+
 
 6. Create a function named `addDesignation` which accepts a `title` and returns another function.
 
+
+
 The returned function accepts a string `prefix` and returns `prefix` and `title` with a space.
 
-```js
-function addDesignation(title) {
-  // your code goes here
+
+function addDesignation(title){
+  return function(str){
+    return str  + title;
+  }  
 }
+let string = addDesignation("string");
+string("check");
 
 let sales = addDesignation('Salesman');
 sales('Main'); // Main Salesman
@@ -90,8 +130,20 @@ manager('Head'); // Head Manager
 - `current` will return the current salary returns the updated salary
 
 ```js
-function changeSalary() {
+function changeSalary(num) {
   // Your code goes here
+  return {
+    raise: function(){
+      return num + 500;
+    },
+     lower: function(){
+      return num - 500;
+    },
+     current: function(){
+      return num;
+    },
+
+  }
 }
 
 let sam = changeSalary(2000);
@@ -110,6 +162,24 @@ arya.lower(); // 3500
 ```js
 // Your code goes here
 
+function nameFactory(firstName,lastname){
+ return {
+   getFullName: function(){
+     return `${firstName} ${lastName}`;
+   },
+   setFirstName:function(first){
+     let firstname = first;
+     return `${firstName} ${lastName}`;
+   },
+   setLastname: function(){
+    let firstname = first;
+     return `${firstName} ${lastName}`;
+   },
+
+ };
+
+}
+
 let arya = nameFactory('Arya', 'Stark');
 arya.getFullName(); // "Arya Stark"
 arya.setFirstName('Jon'); // "Jon Stark"
@@ -121,8 +191,13 @@ arya.setLastName('Lannister'); // "Jon Lannister"
 The returned function accepts a string (children) and returns the children with the tag you passed.
 
 ```js
-function createTag() {
+function createTag(tag) {
   // your code goes here
+ return function (children){
+  let elm = document.createElement(tag);
+  elm.innerText = children;
+  return elm;   
+ }
 }
 
 let bold = createTag('b');
@@ -130,4 +205,41 @@ bold('Hello World!'); // <b>Hello World!</b>
 
 let italic = createTag('i');
 italic('Hello World!'); // <i>Hello World!</i>
+
+
+// function createTag(elm) {
+//   // your code goes here
+//     return function(str) {
+//     let data = document.createElement(elm);
+//     data.innerText = str;
+//     return data;
+//   }
+// }
+
+// let bold = createTag('b');
+// bold('Hello World!'); // <b>Hello World!</b>
+
+// let italic = createTag('i');
+// italic('Hello World!'); // <i>Hello World!</i> 
 ```
+
+<!-- function createTag(tag) {
+  return function(str){
+    return `<${tag}>${str}<${tag}/>`
+  }
+}
+
+// function createTag(tag){
+//   return function(child){
+//     let elm = document.createElement(tag);
+//     elm.innerText = child;
+//     return elm;
+//   }
+// }
+
+let bold = createTag('b');
+bold('Hello World!'); // <b>Hello World!</b>
+
+let italic = createTag('i');
+italic('Hello World!'); // <i>Hello World!</i>
+'<i>Hello World!<i/>' -->
