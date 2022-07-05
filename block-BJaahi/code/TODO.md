@@ -1,28 +1,19 @@
-For the given code below:
 
-- re-write the code in ways that system will understand
-
-For Example:
-
-1.
-
-```js
-var username = 'Arya';
-let brothers = ['John', 'Ryan', 'Bran'];
-
-console.log(username, brothers[0]);
-
+// Declaration
+var username; //undefined
+let brothers; //empty not defined
 function sayHello(name) {
   return `Hello ${name}`;
 }
+let message; // empty i.e not defined
+var nextMessage; //undefined
 
-let message = sayHello(username);
-var nextMessage = sayHello('Test');
-```
-
-<!-- Answer -->
-
-```js
+// Execution phase
+username = 'Arya';
+brothers = ['John', 'Ryan', 'Bran'];
+console.log(username, brothers[0]);
+message = sayHello(username);
+nextMessage = sayHello('Test');
 // Declaration Phase
 var username = undefined;
 let brothers;
@@ -43,11 +34,6 @@ console.log(username, brothers[0]);
 
 message = sayHello(username);
 nextMessage = sayHello('Test');
-```
-
-2.
-
-```js
 console.log(username, numbers);
 
 var username = 'Arya';
@@ -59,17 +45,21 @@ function sayHello(name) {
 
 let message = sayHello(username);
 var nextMessage = sayHello('Test');
-```
+// Declaration
+var username; //undefined
+let number; // not defined
+function sayHello(name) { // fn
+  return `Hello ${name}`;
+}
+let message; //not defined
+var nextMessage; //undefined
 
-<!-- Answer -->
-
-```js
-// Your code goes here
-```
-
-3.
-
-```js
+// Execution
+console.log(username, numbers);
+username = 'Arya';
+number = 21;
+message = sayHello(username);
+nextMessage = sayHello('Test');
 console.log(username, numbers);
 let username = 'Arya';
 let number = 21;
@@ -80,17 +70,22 @@ let sayHello = function (name) {
 
 let message = sayHello(username);
 var nextMessage = sayHello('Test');
-```
+// Declaration
+let username; // not defined
+let number;// not defined
+let sayHello;// not defined
+let message;// not defined
+var nextMessage;// undefined
 
-<!-- Answer -->
-
-```js
-// Your code goes here
-```
-
-4.
-
-```js
+// Execution
+console.log(username, numbers);
+username = 'Arya';
+number = 21;
+sayHello = function (name) {
+  return `Hello ${name}`;
+};
+message = sayHello(username);
+nextMessage = sayHello('Test');
 let username = 'Arya';
 console.log(username, numbers);
 
@@ -102,32 +97,35 @@ let sayHello = function (name) {
 };
 
 var nextMessage = sayHello('Test');
-```
+// Declaration
+let username; //not defined
+let number; // not defined
+let message;// not defined
+let sayHello;// not defined
+var nextMessage;// undefined
 
-<!-- Answer -->
-
-```js
-// Your code goes here
-```
-
-5.
-
-```js
+// Execution
+username = 'Arya';
+console.log(username, numbers);
+number = 21;
+message = sayHello(username);
+sayHello = function (name) {
+  return `Hello ${name}`;
+};
+nextMessage = sayHello('Test');
 console.log(name);
 console.log(age);
 var name = 'Lydia';
 let age = 21;
-```
+// Declaration
+var name;
+let age;
 
-<!-- Answer -->
-
-```js
-// Your code goes here
-```
-
-6.
-
-```js
+// Execution
+console.log(name);
+console.log(age);
+name = 'Lydia';
+age = 21;
 function sayHi(name) {
   console.log(name);
   console.log(age);
@@ -136,17 +134,27 @@ function sayHi(name) {
 }
 
 sayHi();
-```
+// Declaraion
+function sayHi(name) {
+  console.log(name);
+  console.log(age);
+  var name = 'Lydia';
+  let age = 21;
+}
 
-<!-- Answer -->
+// Execution
+sayHi();
 
-```js
-// Your code goes here
-```
+// Declaration
+let name;
+var name;
+let age;
 
-7.
-
-```js
+// Execution
+name = 'Lydia';
+age = 21;
+console.log(name);
+console.log(age);
 sayHi();
 function sayHi(name) {
   console.log(name);
@@ -154,17 +162,25 @@ function sayHi(name) {
   var name = 'Lydia';
   let age = 21;
 }
-```
+// Declaration
+function sayHi(name) {
+  console.log(name);
+  console.log(age);
+  var name = 'Lydia';
+  let age = 21;
+}
 
-<!-- Answer -->
+// Execution
+sayHi();
 
-```js
-// Your code goes here
-```
-
-8.
-
-```js
+// Declaration
+var name; // not defined
+let age; // not defined
+// Execution
+console.log(name);
+console.log(age);
+name = 'Lydia';
+age = 21;
 sayHi();
 let sayHi = function sayHi(name) {
   console.log(name);
@@ -172,32 +188,34 @@ let sayHi = function sayHi(name) {
   var name = 'Lydia';
   let age = 21;
 };
-```
+// Declaration
+let sayHi; // not defined
 
-<!-- Answer -->
+// Execution
+sayHi(); // ERROR sayHi is not defined. bec of let.
 
-```js
-// Your code goes here
-```
-
-9.
-
-```js
+// Declaration function
+var name;
+let age;
+// Execution function
+console.log(name);
+console.log(age);
+name = 'Lydia'
+age = 21;
 let num1 = 21;
 console.log(sum);
 var sum = num1 + num2;
 let num2 = 30;
-```
+// declaration
+let num1;
+var sum;
+let num2;
 
-<!-- Answer -->
-
-```js
-// Your code goes here
-```
-
-10.
-
-```js
+// execution
+console.log(sum);
+num1 =21;
+sum = num1+num2;
+num2 =30;
 var num1 = 21;
 
 let sum2 = addAgain(num1, num2, 4, 5, 6);
@@ -211,17 +229,25 @@ function addAgian(a, b) {
 let num2 = 200;
 
 let sum = add(num1, num2, 4, 5, 6);
-```
+// Declaration
+var num1;
+let sum2;
+let add;
+function addAgian(a, b) {
+  return a + b;
+}
+let num2;
+let sum;
 
-<!-- Answer -->
+// Execution
+num1 = 21;
+sum2 = addAgain(num1, num2, 4, 5, 6);
 
-```js
-// Your code goes here
-```
-
-11.
-
-```js
+// Function addAgain Decalaration
+let a;
+let b;
+a = num1;
+b = num2; // ERROR num2 is not defined. has no value.
 function test(a) {
   let num1 = 21;
   return add(a, num1);
@@ -232,17 +258,27 @@ let sum = test(100);
 let add = (a, b) => {
   return a + b;
 };
-```
+// Declaration
+function test(a) {
+  let num1 = 21;
+  return add(a, num1);
+}
+let sum; //not defined
+let add; //not defined
 
-<!-- Answer -->
+// Execution
+sum = test(100)
 
-```js
-// Your code goes here
-```
+// test() declaration
+let a;
+let num1;
+// test() execution
+a =100;
+num1=21;
+add(a,num1)
 
-12.
-
-```js
+// add() declartion
+// here it'll say add is not defined. because we used let.
 function test(a) {
   let num1 = 21;
   return add(a, num1);
@@ -253,10 +289,29 @@ let sum = test(100);
 function add(a, b) {
   return a + b;
 }
-```
+// Declaration
+function test(a) {
+  let num1 = 21;
+  return add(a, num1);
+}
+let sum; //not defined
+function add(a, b) {
+  return a + b;
+}
 
-<!-- Answer -->
+// Execution
+sum = test(100)
 
-```js
-// Your code goes here
-```
+// test() declaration
+let a;
+let num1;
+// test() execution
+add(a,num1)
+
+// add() declaration
+let a;
+let b;
+// add() execution
+a = a;
+num1 = b;
+// 121 returned by add() which is stored in sum variable.
