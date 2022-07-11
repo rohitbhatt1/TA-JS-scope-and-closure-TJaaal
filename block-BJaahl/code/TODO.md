@@ -93,9 +93,9 @@ let logThreeTimes = nTimes(log, 3, 'Hello Arya');
 logThreeTimes(); // log message "Hello Arya" (1)
 logThreeTimes(); // log message "Hello Arya" (2)
 
-//outputg
-// VM2136:12 Hello Arya
-// VM2136:12 Hello Arya
+//output
+//1 Hello Arya
+//2 Hello Arya
 
 // TEST
 let log = (msg) => console.log(msg);
