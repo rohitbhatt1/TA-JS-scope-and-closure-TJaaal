@@ -2,7 +2,16 @@
 
 ```js
 function once(cb) {
-  // your code goes here
+  let isCalled =false;
+  return function() {
+    if(!isCalled){
+      cb();
+      isCalled
+    }else {
+        return(`Can't we Twice`);
+    }  
+  }
+  
 }
 
 // TEST
@@ -17,8 +26,18 @@ log(); // return undefinde (can't be called twice)
 2. Change the above function in such a way that the function accepts two parameter a callback function and parameter for the callback function. When calling the function pass the parameters.
 
 ```js
-function once(cb) {
+function once(cb,params) {
   // your code goes here
+  let isCalled = false;
+  return function (params) {
+    if (!isCalled) {
+      cb(params);
+      isCalled = true;
+    }else{
+      return  ("can't be called twice");
+    }
+  }
+
 }
 
 // TEST
@@ -34,14 +53,25 @@ log(); // return undefinde (can't be called twice)
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
 
 ```js
-function once(cb) {
+function once(cb ,...rest) {
   // your code goes here
+    let isCalled = false;
+    return function (){
+        if(!isCalled){
+            cb(...rest);
+      isCalled = true;
+        }else{
+        alert('you can call this  Functions again');
+              }
+    }
 }
 
 // TEST
 let log = once(console.log, 'Message one', 'Message Two');
-log(); // log message "Message One Message Two"
-log(); // return undefinde (can't be called twice)
+
+undefined
+log();
+//output Message one Message Two
 ```
 
 4. Create a new function `nTimes` whose 1st parameter is a callback function, 2nd parameter is the number of times the function should be called and 3rd ... nth parameter should be passed to the callback function.
@@ -49,7 +79,23 @@ log(); // return undefinde (can't be called twice)
 ```js
 function nTimes(cb, times, ...rest) {
   // your code goes here
+    let numberOfTimesCalled = 0;
+    return function (){
+        if( numberOfTimesCalled >= times){
+            alert(`You Can't call this function more than ${times} times!`)} else{
+            cb(...rest);
+            numberOfTimesCalled = numberOfTimesCalled + 1;
+        }
+    }
 }
+let log = (msg) => console.log(msg);
+let logThreeTimes = nTimes(log, 3, 'Hello Arya');
+logThreeTimes(); // log message "Hello Arya" (1)
+logThreeTimes(); // log message "Hello Arya" (2)
+
+//outputg
+// VM2136:12 Hello Arya
+// VM2136:12 Hello Arya
 
 // TEST
 let log = (msg) => console.log(msg);
